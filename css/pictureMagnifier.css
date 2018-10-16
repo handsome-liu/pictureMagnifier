@@ -1,0 +1,31 @@
+/* pictureMagnifier */
+/* current style */
+body, div, img, ul, li { margin: 0; padding: 0; }
+
+li { list-style-type: none; }
+
+img { width: 100%; }
+
+/* pictureMagnifier */
+.wrap { margin: 50px; }
+
+#pictureMagnifier { position: relative; width: 300px; height: 168px; background-color: rgba(0, 0, 0, 0.5); box-shadow: 0 0 5px 0 #ccc; cursor: pointer; }
+#pictureMagnifier .img-base { position: relative; z-index: -1; }
+#pictureMagnifier .img-show { display: none; position: absolute; top: 0; left: 310px; width: 600px; height: 336px; background-image: url("../images/img.jpg"); background-repeat: no-repeat; background-size: 600px 336px; }
+#pictureMagnifier .img-clip { position: absolute; top: 0; left: 0; width: 100px; height: 56px; box-shadow: 0 0 1px 1px #fff inset; background-image: url("../images/img.jpg"); background-repeat: no-repeat; background-size: 300px 168px; cursor: move; }
+#pictureMagnifier .img-clip .top, #pictureMagnifier .img-clip .right, #pictureMagnifier .img-clip .bottom, #pictureMagnifier .img-clip .left, #pictureMagnifier .img-clip .left-top, #pictureMagnifier .img-clip .right-top, #pictureMagnifier .img-clip .right-bottom, #pictureMagnifier .img-clip .left-bottom { position: absolute; width: 5px; height: 5px; border-radius: 2.5px; background-color: #fff; }
+#pictureMagnifier .img-clip .top, #pictureMagnifier .img-clip .bottom { left: 0; right: 0; margin-left: auto; margin-right: auto; }
+#pictureMagnifier .img-clip .right, #pictureMagnifier .img-clip .left { top: 0; bottom: 0; margin-top: auto; margin-bottom: auto; }
+#pictureMagnifier .img-clip .top, #pictureMagnifier .img-clip .left-top, #pictureMagnifier .img-clip .right-top { top: -2.5px; }
+#pictureMagnifier .img-clip .bottom, #pictureMagnifier .img-clip .left-bottom, #pictureMagnifier .img-clip .right-bottom { bottom: -2.5px; }
+#pictureMagnifier .img-clip .right, #pictureMagnifier .img-clip .right-top, #pictureMagnifier .img-clip .right-bottom { right: -2.5px; }
+#pictureMagnifier .img-clip .left, #pictureMagnifier .img-clip .left-bottom, #pictureMagnifier .img-clip .left-top { left: -2.5px; }
+#pictureMagnifier .img-clip .top { cursor: n-resize; }
+#pictureMagnifier .img-clip .right { cursor: e-resize; }
+#pictureMagnifier .img-clip .bottom { cursor: s-resize; }
+#pictureMagnifier .img-clip .left { cursor: w-resize; }
+#pictureMagnifier .img-clip .left-top { cursor: nw-resize; }
+#pictureMagnifier .img-clip .right-top { cursor: ne-resize; }
+#pictureMagnifier .img-clip .right-bottom { cursor: se-resize; }
+#pictureMagnifier .img-clip .left-bottom { cursor: sw-resize; }
+#pictureMagnifier:hover .img-show { display: block; }

@@ -1,0 +1,164 @@
+/* pictureMagnifier */
+
+/* current style */
+body,
+div,
+img,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style-type: none;
+}
+img {
+    width: 100%;
+}
+
+/* pictureMagnifier */
+$width: 300px;
+$height: 168px;
+.wrap {
+    margin: 50px;
+}
+
+#pictureMagnifier {
+    position: relative;
+    width: $width; // 在js中被初始化改变
+    height: $height; // 在js中被初始化改变
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    box-shadow: 0 0 5px 0 #ccc;
+    cursor: pointer;
+
+    // 底层
+    .img-base {
+        position: relative;
+        z-index: -1;
+    }
+
+    // 展示
+    .img-show {
+        // img-show 的宽高
+        $show-width: $width * 2;
+        $show-height: $height * 2;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: $width + 10px;
+        width: $show-width;
+        height: $show-height;
+        background: {
+            image: url('../images/img.jpg');
+            repeat: no-repeat;
+            size: $show-width $show-height;
+        }
+    }
+
+    // 截取
+    .img-clip {
+        $point-size: 5px;
+        $pos-point: -$point-size / 2;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: $width / 3;
+        height: $height / 3;
+        box-shadow: 0 0 1px 1px #fff inset;
+        background: {
+            image: url('../images/img.jpg');
+            repeat: no-repeat;
+            size: $width $height;
+        }
+        cursor: move;
+
+        .top,
+        .right,
+        .bottom,
+        .left,
+        .left-top,
+        .right-top,
+        .right-bottom,
+        .left-bottom {
+            position: absolute;
+            width: $point-size;
+            height: $point-size;
+            border-radius: $point-size / 2;
+            background-color: #fff;
+        }
+
+        .top,
+        .bottom {
+            left: 0;
+            right: 0;
+            margin: {
+                left: auto;
+                right: auto;
+            }
+        }
+
+        .right,
+        .left {
+            top: 0;
+            bottom: 0;
+            margin: {
+                top: auto;
+                bottom: auto;
+            }
+        }
+
+        .top,
+        .left-top,
+        .right-top {
+            top: $pos-point;
+        }
+
+        .bottom,
+        .left-bottom,
+        .right-bottom {
+            bottom: $pos-point;
+        }
+
+        .right,
+        .right-top,
+        .right-bottom {
+            right: $pos-point;
+        }
+
+        .left,
+        .left-bottom,
+        .left-top {
+            left: $pos-point;
+        }
+
+        .top {
+            cursor: n-resize;
+        }
+        .right {
+            cursor: e-resize;
+        }
+        .bottom {
+            cursor: s-resize;
+        }
+        .left {
+            cursor: w-resize;
+        }
+        .left-top {
+            cursor: nw-resize;
+        }
+        .right-top {
+            cursor: ne-resize;
+        }
+        .right-bottom {
+            cursor: se-resize;
+        }
+        .left-bottom {
+            cursor: sw-resize;
+        }
+    }
+
+    // hover 出现 .img-show
+    &:hover .img-show {
+        display: block;
+    }
+}
